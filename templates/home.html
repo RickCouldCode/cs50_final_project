@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playgardens</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <!-- Conditional Rendering Based on User Login Status 
+    {% if g.user %}
+        <!-- Content for Logged-in Users -->
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('create_community') }}">Create Community</a></li>
+                <li><a href="{{ url_for('create_post') }}">Create Post</a></li>
+            </ul>
+        </nav> 
+    {% else %}
+        <!-- Content for Guests (Not Logged-in Users) -->
+        <p>Welcome, guest! Browse our communities.</p>
+    {% endif %} -->
+    
+    <header>
+        <h1>Playgardens</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/gardens">Gardens</a></li>
+                <li><a href="/user_profile">Profile</a></li>
+                <li><a href="/chat">Chat</a></li>
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/community">Communities</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="cta-section">
+            <h2>Join Our Community</h2>
+            <p>Connect with garden enthusiasts around the world.</p>
+            <a href = "/register"> <button class="cta-button">Join Now</button> </a>
+        </section>
+        <section>
+            <h2>Featured Gardens</h2>
+            <!-- List of Gardens -->
+        </section>
+        <section>
+            <h2>Latest Discussions</h2>
+            <!-- Latest discussion threads -->
+        </section>
+    </main>
+    <footer>
+        <p>© 2023 Playgardens</p>
+    </footer>
+</body>
+</html>

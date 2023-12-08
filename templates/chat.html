@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="chat-container">
+    <ul class="messages">
+        {% for message in messages %}
+        <li><strong>{{ message.username }}</strong>: {{ message.text }}</li>
+        {% endfor %}
+    </ul>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        {{ form.message.label }} {{ form.message(size=32) }}
+        {{ form.submit() }}
+    </form>
+</div>
+{% endblock %}

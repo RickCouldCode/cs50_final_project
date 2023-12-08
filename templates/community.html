@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ community.name }}</h2>
+<p>{{ community.description }}</p>
+
+<h3>Posts</h3>
+<div>
+    {% for post in community.posts %}
+    <article>
+        <h4>{{ post.title }}</h4>
+        <div>{{ post.content }}</div>
+    </article>
+    {% endfor %}
+</div>
+
+<!-- Only show post form if user is logged in -->
+{% if session.user_id %}
+<h3>Create a new post</h3>
+<form method="POST" action="{{ url_for('create_post', community_id=community.id) }}">
+    {{ post_form.hidden_tag() }}
+    <div>
+        {{ post_form.title.label }}
+        {{ post_form.title }}
+    </div>
+    <div>
+        {{ post_form.content.label }}
+        {{ post_form.content }}
+    </div>
+    <div>
+        {{ post_form.submit() }}
+    </div>
+</form>
+{% endif %}
+{% endblock %}
