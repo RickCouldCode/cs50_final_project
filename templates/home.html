@@ -8,34 +8,30 @@
 </head>
 
 <body>
-    <!-- Conditional Rendering Based on User Login Status 
-    {% if g.user %}
-        <!-- Content for Logged-in Users -->
-        <nav> 
-            <ul>
-                <li><a href="{{ url_for('create_community') }}">Create Community</a></li>
-                <li><a href="{{ url_for('create_post') }}">Create Post</a></li>
-            </ul>
-        </nav> 
-    {% else %}
-        <!-- Content for Guests (Not Logged-in Users) -->
-        <p>Welcome, guest! Browse our communities.</p>
-    {% endif %} -->
-    
+
     <header>
         <h1>Playgardens</h1>
+    
         <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/gardens">Gardens</a></li>
-                <li><a href="/user_profile">Profile</a></li>
-                <li><a href="/chat">Chat</a></li>
-                <li><a href="/register">Register</a></li>
+          <ul>
+    
+            <li><a href="/">Home</a></li>
+    
+            {% if 'user_id' in session %}
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            {% else %}
                 <li><a href="/login">Login</a></li>
-                <li><a href="/community">Communities</a></li>
-            </ul>
+                <li><a href="/register">Register</a></li>
+            {% endif %}
+    
+            <li><a href="/chat">Chat</a></li>
+            <li><a href="/communities">Communities</a></li>
+    
+          </ul>
         </nav>
-    </header>
+    
+      </header>
     <main>
         <section class="cta-section">
             <h2>Join Our Community</h2>
@@ -49,6 +45,15 @@
         <section>
             <h2>Latest Discussions</h2>
             <!-- Latest discussion threads -->
+        </section>
+        <section>
+            <h2>Communities</h2>
+            <a href="{{ url_for('create_community') }}" class="btn btn-primary">Create Community</a>
+            <ul>
+                {% for community in communities %}
+                <li><a href="{{ url_for('community', community_id=community.id) }}">{{ community.name }}</a></li>
+                {% endfor %}
+            </ul>
         </section>
     </main>
     <footer>

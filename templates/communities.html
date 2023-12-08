@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Communities</h2>
-<ul>
-    {% for community in communities %}
-    <li><a href="{{ url_for('community', id=community.id) }}">{{ community.name }}</a></li>
-    {% endfor %}
-</ul>
+<div class="community-list-container">
+    <h2 class="community-list-title">Communities</h2>
+    <div class="community-list-actions">
+        <a href="{{ url_for('create_community') }}" class="btn btn-success">Create Community</a>
+    </div>
+    <ul class="community-list">
+        {% for community in communities %}
+            <li class="community-item"><a href="{{ url_for('community', community_id=community.id) }}">{{ community.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

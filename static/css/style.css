@@ -233,3 +233,163 @@ footer {
 .flash-message.error {
     color: red;
 }
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Community Page Enhancements */
+.community-header {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.join-community-form {
+    margin-top: 1rem;
+}
+
+.posts-section {
+    margin-bottom: 2rem;
+}
+
+.post-card {
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.post-author {
+    font-style: italic;
+    color: #666;
+}
+
+.create-post-section {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.create-post-form .form-group {
+    margin-bottom: 1rem;
+}
+
+/* Enhancing buttons */
+.btn-primary,
+.btn-success,
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-success:hover,
+input[type="submit"]:hover {
+    background-color: #367c39;
+}
+
+/* Form controls */
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Adjustments for small screens */
+@media screen and (max-width: 600px) {
+    /* ... Your existing responsive styles ... */
+    
+    .post-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .post-author {
+        margin-top: 10px;
+    }
+}
+
+
+/* New styles for the communities page */
+.community-list-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.community-list-title {
+    margin-bottom: 20px;
+}
+
+.community-list-actions {
+    margin-bottom: 20px;
+}
+
+.community-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.community-item {
+    background: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.community-item a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.community-item:hover {
+    background: #e9e9e9;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}

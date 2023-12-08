@@ -11,7 +11,7 @@ def password_strength(form, field):
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired(), password_strength])
+    password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
 
@@ -43,3 +43,5 @@ class EditProfileForm(FlaskForm):
     location = StringField('Location', validators=[Length(min=0, max=50)])
     submit = SubmitField('Submit')
 
+class JoinForm(FlaskForm):
+    pass

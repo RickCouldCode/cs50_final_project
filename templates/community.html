@@ -1,35 +1,46 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>{{ community.name }}</h2>
-<p>{{ community.description }}</p>
+<div class="community-header">
+    <h2>{{ community.name }}</h2>
+    <p>{{ community.description }}</p>
 
-<h3>Posts</h3>
-<div>
-    {% for post in community.posts %}
-    <article>
-        <h4>{{ post.title }}</h4>
-        <div>{{ post.content }}</div>
-    </article>
-    {% endfor %}
+    {% if session.user_id and not user_is_member %}
+    <form action="{{ url_for('join_community', community_id=community.id) }}" method="post" class="join-community-form">
+        {{ join_form.hidden_tag() }}
+        <button type="submit" class="btn btn-primary">Join Community</button>
+    </form>
+    {% endif %}
 </div>
 
-<!-- Only show post form if user is logged in -->
-{% if session.user_id %}
-<h3>Create a new post</h3>
-<form method="POST" action="{{ url_for('create_post', community_id=community.id) }}">
-    {{ post_form.hidden_tag() }}
-    <div>
-        {{ post_form.title.label }}
-        {{ post_form.title }}
+<section class="posts-section">
+    <h3>Posts</h3>
+    {% for post in community.posts %}
+    <div class="post-card">
+        <div class="post-header">
+            <h4>{{ post.title }}</h4>
+            <span class="post-author">by {{ post.author.username }}</span>
+        </div>
+        <p>{{ post.content }}</p>
     </div>
-    <div>
-        {{ post_form.content.label }}
-        {{ post_form.content }}
-    </div>
-    <div>
-        {{ post_form.submit() }}
-    </div>
-</form>
+    {% endfor %}
+</section>
+
+{% if session.user_id and user_is_member %}
+<section class="create-post-section">
+    <h3>Create a new post</h3>
+    <form method="POST" action="{{ url_for('create_post', community_id=community.id) }}" class="create-post-form">
+        {{ post_form.hidden_tag() }}
+        <div class="form-group">
+            {{ post_form.title.label }}
+            {{ post_form.title(class_='form-control') }}
+        </div>
+        <div class="form-group">
+            {{ post_form.content.label }}
+            {{ post_form.content(class_='form-control') }}
+        </div>
+        <button type="submit" class="btn btn-success">{{ post_form.submit.label }}</button>
+    </form>
+</section>
 {% endif %}
 {% endblock %}

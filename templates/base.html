@@ -18,27 +18,28 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('gardens') }}">Communities</a>
+                    <a class="nav-link" href="{{ url_for('communities') }}">Communities</a>
                 </li>
                 <!-- Insert the new user-specific navigation items here -->
-                {% if g.user %}
+                {% if session.user_id %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-                        {{ g.user.username }}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ url_for('profile') }}">Profile</a>
-                        <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
-                    </div>
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                    {{ g.user.username if g.user else 'Profile' }}
+                  </a>
+              
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+                  </div>
                 </li>
-                {% else %}
+              {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                  <a class="nav-link" href="{{ url_for('login') }}">Login</a>
                 </li>
+                
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                  <a class="nav-link" href="{{ url_for('register') }}">Register</a>
                 </li>
-                {% endif %}
+              {% endif %}
             </ul>
         </div>
     </nav>
